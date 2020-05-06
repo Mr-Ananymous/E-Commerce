@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <style>
+     body
+     {
+       background-color: rgba(50, 149, 168);
+     }
+     .link{
+       color: inherit;
+     }
+     .link:hover{
+       text-decoration: none;
+       color:inherit;
+     }
+     .main{
+       left:20px;
+     }
+     .filter
+     {
+       position:absolute;
+       left:5px;
+       right:1500px;
+       width:20%;
+       top:195px;
+     }
+     .container
+     {
+      width:30%;
+      left:70px;
+     }
+     .f
+     {
+       font-size:20px;
+     }
+     .main
+     {
+       position:relative;
+     }
+     .product{
+       position:relative;
+       width:940px;
+       right:0px;
+       left:140px;
+     }
+     .spec
+     {
+       position:absolute;
+       top:0px;
+       right:0px;
+       width:720px;
+       left:220px;
+       padding-top:5px;
+     }
+     .pic
+     {
+       position:absolute;
+       top:0px;
+       left:70px;
+     }
+     footer{
+       bottom:0px;
+       left:0px;
+       position:relative;
+       width:100%;
+       text-align:center;
+     }
+     </style>
+     <link rel="icon" type="image" href="favicon.png">
+    <title>MobiZ</title>
+  </head>
+  <body>
+   <div class="container-fluid bg-dark text-white">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark shadow p-4 mb-4">
+        <a class="brand">
+           <img src="images/Logo.png" width="70px">&nbsp;
+        </a>
+        <ul class="navbar-nav">
+          <li class="navbar-item">
+             <a href="mainL.jsp" class="text-white f">MobiZ</a>
+          </li>
+        </ul>
+</nav>
+</div>
+
+    <div  class="container" id="paypal-button-container"></div>
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AdHoYMr-pLf4A5bR-ZKFsn4L18isBoEIrtjpvSx9wkXrM1aE4xtTdMd3-KhDfvCVK3hBQ2td_c6dArZD&currency=INR"></script>
+<script> var price=localStorage.getItem("price") </script>
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value:price
+    
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    
+     </script>
+     <br><br><br><br><br><br><br><br>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   <footer class="text-white bg-dark"><br>
+     <h5 class="text-center"> &copy; copyrights 2020</h5><br>
+     <h6 class="text-center">Open source project powered by &nbsp;&nbsp;<img src="images/html-5.png">&nbsp;&nbsp;<img src="images/css.png">
+     &nbsp;&nbsp;<img src="images/java.png">&nbsp;&nbsp;<img src="images/bootstrap.png"></h6><br>
+     <h5 class="text-center">Contact info </h5>
+     <h6 class="text-center">&nbsp;&nbsp;<img src="mail.png">&nbsp;iamnithishguhan@gmail.com </h6>
+     <h6 class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sabaribalag3@gmail.com </h6>
+     <h6 class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;srinath652001@gmail.com </h6><br><br>
+   </footer>
+  </body>
+</html>
+
+    
